@@ -26,12 +26,12 @@ body {
 
 /* sets snap points */
 html, body {
-    scroll-snap-type: y proximity;
+    scroll-snap-type: y mandatory;
 }
 
 .snap-point {
-    scroll-snap-align: start;100vw
-    scroll-snap-stop: always;
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
 }
 
 .logo {
