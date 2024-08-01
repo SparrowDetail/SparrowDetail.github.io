@@ -32,6 +32,7 @@ html, body {
 .snap-point {
     scroll-snap-align: start;
     scroll-snap-stop: normal;
+    overflow: scroll;
 }
 
 .logo {
@@ -210,20 +211,20 @@ section {
     }
 }
 
-.introduction-divider {
+.introduction-text {
     display: flex;
     flex-direction: column;
     place-items: center;
     text-align: center;
-    max-width: 40rem;
+    max-width: 90%;
 
     hr {
         width: 100%;
-        border: 2px solid $sparrow-white;
+        border: 1.5px solid $sparrow-white;
     }
 
     h2 {
-        font-size: 2.4em;
+        font-size: 2.6em;
         font-weight: 700;
         margin: 0 0 1rem 0;
     }
@@ -379,8 +380,10 @@ footer {
 }
 
 $desktop-styles-min-width: 800px;
-/*Desktop styles*/
-@media only screen and (min-width: $desktop-styles-min-width) {
+$tablet-styles-min-width: 410px;
+
+/*Tablet and desktop styles*/
+@media only screen and (min-width: $tablet-styles-min-width) {
     /*Header styles*/
     .nav-container {
         height: $nav-height;
@@ -420,7 +423,17 @@ $desktop-styles-min-width: 800px;
             font-size: 5.4em;
         }
     }
+}
 
+/*Tablet Style only styles*/
+@media only screen and (min-width: $tablet-styles-min-width) and (max-width: $desktop-styles-min-width) {
+    .three-col-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/*Desktop only styles*/
+@media only screen and (min-width: $desktop-styles-min-width) {
     /* main styles */
     
     .section-content {
@@ -468,13 +481,6 @@ $desktop-styles-min-width: 800px;
         .footer-content {
             width: $desktop-content-width;
         }
-    }
-}
-
-/*Tablet Style*/
-@media only screen and (min-width: 400px) and (max-width: $desktop-styles-min-width) {
-    .three-col-grid {
-        grid-template-columns: repeat(2, 1fr);
     }
 }
 
