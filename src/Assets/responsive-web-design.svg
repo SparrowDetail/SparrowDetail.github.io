@@ -1,0 +1,20 @@
+<svg width="430" height="430" viewBox="0 0 430 430" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="15" y="63" width="400" height="255" rx="20" fill="#393939"/>
+<rect x="203" y="318" width="24" height="47" fill="#393939"/>
+<line x1="152.998" y1="363" x2="277.002" y2="363" stroke="#393939" stroke-width="5"/>
+<rect x="40" y="83" width="350" height="207" rx="5" fill="#CFCFCF"/>
+<path d="M40 88C40 85.2386 42.2386 83 45 83H385C387.761 83 390 85.2386 390 88V104H40V88Z" fill="#939393"/>
+<rect x="64.0015" y="205" width="59" height="6" fill="#454444"/>
+<path d="M64 228H213.999M64 219H213.999" stroke="#454444" stroke-width="2"/>
+<path d="M64.0015 276H214" stroke="#454444" stroke-width="2"/>
+<path d="M64.0015 266H214M64.0015 257H214" stroke="#454444" stroke-width="2"/>
+<path d="M64.0015 247H214M64.0015 238H214" stroke="#454444" stroke-width="2"/>
+<rect x="64" y="114" width="110" height="76" fill="#FB6363"/>
+<rect x="223" y="205" width="142" height="76" fill="#7EB17F"/>
+<rect x="199.001" y="114" width="59" height="6" fill="#454444"/>
+<path d="M199 137H365.003M199 128H365.003" stroke="#454444" stroke-width="2"/>
+<path d="M199.001 185H365.004" stroke="#454444" stroke-width="2"/>
+<path d="M199.001 175H365.004M199.001 166H365.004" stroke="#454444" stroke-width="2"/>
+<path d="M199.001 156H365.004M199.001 147H365.004" stroke="#454444" stroke-width="2"/>
+<ellipse cx="215" cy="303.5" rx="11" ry="3.5" fill="#F9F9F9"/>
+</svg>

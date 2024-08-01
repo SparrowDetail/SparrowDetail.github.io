@@ -163,6 +163,7 @@ section {
 #projects-section {
   background-color: #C8BDB0;
   color: #0D0C08;
+  padding-bottom: 18rem;
 }
 #projects-section h2 {
   font-size: 2.4em;
@@ -209,7 +210,7 @@ section {
   height: fit-content;
   align-items: start;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 1rem;
   place-items: center;
 }
@@ -232,6 +233,7 @@ section {
   border: 2px solid #0D0C08;
   overflow: hidden;
   box-shadow: 2px 2px 4px 2px #A09289;
+  grid-column: span 1;
 }
 .project-display a {
   display: inherit;
@@ -274,6 +276,10 @@ section {
 }
 #dungeon-bot-logo {
   background-color: #36393F;
+}
+
+#responsive-web-design {
+  background-color: #737373;
 }
 
 .social-links {
@@ -330,7 +336,7 @@ footer .footer-content * {
 }
 
 /*Desktop styles*/
-@media only screen and (min-width: 440px) {
+@media only screen and (min-width: 800px) {
   /*Header styles*/
   .nav-container {
     height: 6rem;
@@ -344,8 +350,8 @@ footer .footer-content * {
   }
   .welcome-block-content-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 1fr);
     place-items: center;
   }
   .welcome-block-content-container img {
@@ -382,17 +388,8 @@ footer .footer-content * {
   .introduction-divider p {
     font-size: 2.6em;
   }
-  .three-col-grid .col-1 {
-    grid-column: 1/2;
-  }
-  .three-col-grid .col-2 {
-    grid-column: 2/3;
-  }
-  .three-col-grid .col-3 {
-    grid-column: 3/4;
-  }
-  .three-col-grid .split-col {
-    grid-column: 1/-1;
+  .three-col-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
   .social-links a {
     font-size: 2.2em;
@@ -402,16 +399,10 @@ footer .footer-content * {
     width: 90%;
   }
 }
-/*Convert 3 column grid to 2 columns*/
-@media only screen and (min-width: 440px) and (max-width: 800px) {
+/*Tablet Style*/
+@media only screen and (min-width: 400px) and (max-width: 800px) {
   .three-col-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-  .three-col-grid .col-1, .three-col-grid .col-2, .three-col-grid .col-3 {
-    grid-column: span 1;
-  }
-  .three-col-grid .split-col {
-    grid-column: 1/-1;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 /*Special case media queries*/
