@@ -1,3 +1,5 @@
+@import "../css/content-cards.css";
+
 $sparrow-white: #D9D9D9;
 $sparrow-tan: #C8BDB0;
 $sparrow-brown: #86552D;
@@ -32,25 +34,19 @@ body {
     background-color: $sparrow-white;
 }
 
-//                  --- header styles ---
+/*                  --- header styles ---*/
 header::before {
     display: block;
     width: 100vw;
-    height: 200vh;
+    height: 400vh;
     content: " ";
 }
 
-.viewport, .header-viewport {
+body>section, header>section {
     width: 100vw;
     height: 100vh;
     margin: 0;
     padding: 0;
-}
-
-.header-viewport {
-    position: fixed;
-    top: 0;
-    left: 0;
 }
 
 .logo {
@@ -92,6 +88,8 @@ header::before {
 #sparrow-detail {
     background-color: $sparrow-brown;
     position: fixed;
+    top: 0;
+    left: 0;
 }
 
 #sparrow-detail-logo {
@@ -100,13 +98,29 @@ header::before {
     left: calc(50% - (var(--image-width) / 2));
 }
 
-//Desktop viewport
+#about-me {
+    display: flex;
+    position: fixed;
+    top: 100vh;
+    left: 0;
+}
+
+
+#about-me-page {
+    margin: auto;
+
+    /* Custom web-card styles */
+    --width: 70vw;
+    --height: 60vh;
+}
+
+/*Desktop viewport styles*/
 @media only screen and (min-width: 820px) {
     :root{
         --image-viewport-width: 520px;
     }
 
-//                  --- header styles ---
+/*                  --- header styles ---*/
     .logo {
         --image-width: min(500px, 40vw);
         --image-height: min(500px, 40vw);
@@ -140,10 +154,10 @@ header::before {
     }
 }
 
-//Animation accessibility - no preference
+/*Animation accessibility - no preference*/
 @media (prefers-reduced-motion: no-preference) {
     #sparrow-detail {
-        animation: window-slide cubic-bezier(1,.12,.34,-0.05) 1s;
+        animation: window-slide-1s cubic-bezier(1,.12,.34,-0.05) 1s;
     }
 
     #sparrow-detail-logo {
@@ -161,9 +175,22 @@ header::before {
         animation-fill-mode: both;
     }
 
-    @keyframes window-slide {
+    #about-me {
+        animation: window-slide-2s cubic-bezier(1,.12,.34,-0.05) 2s;
+        animation-play-state: paused;
+        animation-delay: calc(var(--scroll) * -1s);
+        animation-iteration-count: 1;
+        animation-fill-mode: both;
+    }
+
+    @keyframes window-slide-1s {
         0% {transform: translateY(0%);}
         100% {transform: translateY(-100%); opacity: 0.1;}
+    }
+
+    @keyframes window-slide-2s {
+        50% {transform: translateY(-100%);}
+        100% {transform: translateY(-200%); opacity: 0.1;}
     }
 
     @keyframes image-fade-out {
@@ -181,7 +208,7 @@ header::before {
     }
 }
 
-//Animation accessibility - reduced
+/*Animation accessibility - reduced*/
 @media (prefers-reduced-motion: reduced) {
     #sparrow-detail {
         transform: translateY(min(0%, calc(-1% * (100 * var(--scroll)) + 40%)));

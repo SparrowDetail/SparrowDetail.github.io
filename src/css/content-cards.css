@@ -1,0 +1,41 @@
+/*Webpage card class with customizable variable settings*/
+.web-card {
+    --width: 80vw;
+    --height: 80vh;
+    --red: red;
+    --yellow: yellow;
+    --green: green;
+    --barHeight: 35px;
+    --backgroundColor: #D9D9D9;
+    --barColor: #A09289;
+    --barGlare: #787878;
+    width: var(--width);
+    height: var(--height);
+    padding: 4rem 1rem 1rem;
+    background: radial-gradient(
+        circle at calc(var(--width) - var(--barHeight)) calc(var(--barHeight) / 2), 
+        var(--red), 
+        var(--red) calc(var(--barHeight) / 2 - 5px), 
+        transparent calc(var(--barHeight) / 2 - 4px)),
+    radial-gradient(
+        circle at calc(var(--width) - (2 * (var(--barHeight)))) calc(var(--barHeight) / 2), 
+        var(--yellow), 
+        var(--yellow) calc(var(--barHeight) / 2 - 5px), 
+        transparent calc(var(--barHeight) / 2 - 4px)
+    ),
+    radial-gradient(
+        circle at calc(var(--width) - (3 * (var(--barHeight)))) calc(var(--barHeight) / 2), 
+        var(--green), 
+        var(--green) calc(var(--barHeight) / 2 - 5px), 
+        transparent calc(var(--barHeight) / 2 - 4px)
+    ),
+    linear-gradient(
+        var(--barColor),
+        var(--barColor) calc(var(--barHeight) - 10px),
+        var(--barGlare) var(--barHeight),
+        var(--backgroundColor) var(--barHeight)
+    );
+    border-radius: 10px;
+    border: 1px solid black;
+    box-shadow: 0px 0px 20px -4px black;
+}
