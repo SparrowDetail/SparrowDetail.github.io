@@ -11,7 +11,7 @@
     --barGlare: #787878;
     width: var(--width);
     height: var(--height);
-    padding: 4rem 1rem 1rem;
+    padding: calc(var(--barHeight) + 1rem) 1rem 1rem;
     background: radial-gradient(
         circle at calc(var(--width) - var(--barHeight)) calc(var(--barHeight) / 2), 
         var(--red), 
