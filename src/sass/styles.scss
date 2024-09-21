@@ -42,7 +42,7 @@ header::before {
     content: " ";
 }
 
-body>section, header>section {
+main>section, header>section {
     width: 100vw;
     height: 100vh;
     margin: 0;
@@ -90,6 +90,7 @@ body>section, header>section {
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 5;
 }
 
 #sparrow-detail-logo {
@@ -101,8 +102,9 @@ body>section, header>section {
 #about-me {
     display: flex;
     position: fixed;
-    top: 100vh;
+    top: 0;
     left: 0;
+    z-index: 4;
 }
 
 
@@ -154,10 +156,25 @@ body>section, header>section {
     }
 }
 
+#author-name {
+    --typing-character-count: 12;
+}
+
+.type-animation, .type-animation-container {
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    width: fit-content;
+    height: fit-content;
+    max-width: fit-content;
+    height: fit-content;
+}
+
 /*Animation accessibility - no preference*/
 @media (prefers-reduced-motion: no-preference) {
     #sparrow-detail {
-        animation: window-slide-1s cubic-bezier(1,.12,.34,-0.05) 1s;
+        animation: window-slide cubic-bezier(1,.12,.34,-0.05) 1s;
     }
 
     #sparrow-detail-logo {
@@ -176,21 +193,16 @@ body>section, header>section {
     }
 
     #about-me {
-        animation: window-slide-2s cubic-bezier(1,.12,.34,-0.05) 2s;
+        animation: window-slide cubic-bezier(1,.12,.34,-0.05) 2s;
         animation-play-state: paused;
-        animation-delay: calc(var(--scroll) * -1s);
+        animation-delay: calc(max(0, var(--scroll) - 1) * -1s);
         animation-iteration-count: 1;
         animation-fill-mode: both;
     }
 
-    @keyframes window-slide-1s {
+    @keyframes window-slide {
         0% {transform: translateY(0%);}
         100% {transform: translateY(-100%); opacity: 0.1;}
-    }
-
-    @keyframes window-slide-2s {
-        50% {transform: translateY(-100%);}
-        100% {transform: translateY(-200%); opacity: 0.1;}
     }
 
     @keyframes image-fade-out {
@@ -206,11 +218,36 @@ body>section, header>section {
             transform: translateX(100%);
         }
     }
+
+    .type-animation {
+        /*modify variables to meet needs*/
+        --cursor-color: black;
+        --typing-character-count: 10;
+
+        border-right: var(--cursor-color) solid calc(1em/2);
+
+        animation: typing 1s steps(calc(var(--typing-character-count) + 1)) forwards 1,
+                   typing-cursor 1s step-end infinite;
+    }
+
+    @keyframes typing {
+        0% {width:0;}
+        100% {width:100%;}
+    }
+
+    @keyframes typing-cursor {
+        50% {border-right: transparent;}
+    }
 }
 
 /*Animation accessibility - reduced*/
 @media (prefers-reduced-motion: reduced) {
     #sparrow-detail {
-        transform: translateY(min(0%, calc(-1% * (100 * var(--scroll)) + 40%)));
+        transform: translateY(min(0%, calc(-1% * (100 * var(--scroll)))));
+    }
+
+    #about-me {
+        top: 100vh;
+        transform: translateY(min(0%, calc(-1% * (100 * var(--scroll)))));;
     }
 }
