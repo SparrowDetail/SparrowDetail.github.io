@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import "../css/content-cards.css";
 
 $sparrow-white: #D9D9D9;
@@ -34,6 +35,11 @@ body {
     background-color: $sparrow-white;
 }
 
+
+.hidden {
+    display: none;
+}
+
 /*                  --- header styles ---*/
 header::before {
     display: block;
@@ -56,9 +62,12 @@ main>section, header>section {
     object-fit: cover;
     width: var(--image-width);
     height: var(--image-height);
-    border: 2px solid $sparrow-black;
-    border-radius: 50%;
     background-color: $sparrow-dark-brown;
+}
+
+.rounded-image, .logo {
+    border-radius: 50%;
+    border: 2px solid $sparrow-black;
 }
 
 .header-text {
@@ -85,6 +94,7 @@ main>section, header>section {
     }
 }
 
+/*Sparrow detail page*/
 #sparrow-detail {
     background-color: $sparrow-brown;
     position: fixed;
@@ -99,9 +109,11 @@ main>section, header>section {
     left: calc(50% - (var(--image-width) / 2));
 }
 
+/*About me page*/
 #about-me {
     display: flex;
     position: fixed;
+    background-color: $sparrow-black;
     top: 0;
     left: 0;
     z-index: 4;
@@ -110,144 +122,27 @@ main>section, header>section {
 
 #about-me-page {
     margin: auto;
+    box-shadow: 0px 0px 50px -9px $sparrow-white;
 
     /* Custom web-card styles */
-    --width: 70vw;
-    --height: 60vh;
+    --width: 90%;
+    --height: 90%;
+
+    h1 {
+        font-size: 4em;
+    }
+}
+
+#profile-image {
+    width: 100%;
+    height: fit-content;
+    max-width: 500px;
 }
 
 /*Desktop viewport styles*/
 @media only screen and (min-width: 820px) {
-    :root{
-        --image-viewport-width: 520px;
-    }
-
-/*                  --- header styles ---*/
-    .logo {
-        --image-width: min(500px, 40vw);
-        --image-height: min(500px, 40vw);
-    }
-
-    .header-text {
-        width: fit-content;
-        height: 100vh;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        font-size: min(50px, 3vw);
-        top: 0;
-        left: min(calc(var(--image-viewport-width) + 2rem), 50vw);
-    }
-
-    #sparrow-detail {
-        background: linear-gradient(
-        90deg,
-        $sparrow-grey 0%,
-        $sparrow-grey min(520px, 45vw),
-        $sparrow-brown min(520px, 45vw)
-        );
-    }
-
-    #sparrow-detail-logo {
-        position: fixed;
-        top: calc(50vh - (var(--image-height) / 2));
-        left: calc(var(--image-viewport-width) - var(--image-width));
-        left: calc(min(var(--image-viewport-width) / 2, 45vw / 2) - (var(--image-width) / 2));
-    }
+    @import "./desktop.scss";
 }
 
-#author-name {
-    --typing-character-count: 12;
-}
-
-.type-animation, .type-animation-container {
-    margin: 0;
-    padding: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    width: fit-content;
-    height: fit-content;
-    max-width: fit-content;
-    height: fit-content;
-}
-
-/*Animation accessibility - no preference*/
-@media (prefers-reduced-motion: no-preference) {
-    #sparrow-detail {
-        animation: window-slide cubic-bezier(1,.12,.34,-0.05) 1s;
-    }
-
-    #sparrow-detail-logo {
-        animation: image-fade-out ease-out 1s;
-    }
-
-    .header-text {
-        animation: text-fade-out ease-out 1s;
-    }
-
-    #sparrow-detail, #sparrow-detail-logo, .header-text {
-        animation-play-state: paused;
-        animation-delay: calc(var(--scroll) * -1s);
-        animation-iteration-count: 1;
-        animation-fill-mode: both;
-    }
-
-    #about-me {
-        animation: window-slide cubic-bezier(1,.12,.34,-0.05) 2s;
-        animation-play-state: paused;
-        animation-delay: calc(max(0, var(--scroll) - 1) * -1s);
-        animation-iteration-count: 1;
-        animation-fill-mode: both;
-    }
-
-    @keyframes window-slide {
-        0% {transform: translateY(0%);}
-        100% {transform: translateY(-100%); opacity: 0.1;}
-    }
-
-    @keyframes image-fade-out {
-        100% {
-            opacity: 0;
-            transform: translateX(-100%);
-        }
-    }
-
-    @keyframes text-fade-out {
-        100% {
-            opacity: 0;
-            transform: translateX(100%);
-        }
-    }
-
-    .type-animation {
-        /*modify variables to meet needs*/
-        --cursor-color: black;
-        --typing-character-count: 10;
-
-        border-right: var(--cursor-color) solid calc(1em/2);
-
-        animation: typing 1s steps(calc(var(--typing-character-count) + 1)) forwards 1,
-                   typing-cursor 1s step-end infinite;
-    }
-
-    @keyframes typing {
-        0% {width:0;}
-        100% {width:100%;}
-    }
-
-    @keyframes typing-cursor {
-        50% {border-right: transparent;}
-    }
-}
-
-/*Animation accessibility - reduced*/
-@media (prefers-reduced-motion: reduced) {
-    #sparrow-detail {
-        transform: translateY(min(0%, calc(-1% * (100 * var(--scroll)))));
-    }
-
-    #about-me {
-        top: 100vh;
-        transform: translateY(min(0%, calc(-1% * (100 * var(--scroll)))));;
-    }
-}
+//Animation styles
+@import "./animations.scss";

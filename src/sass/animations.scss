@@ -1,0 +1,115 @@
+/*Animation settings*/
+.type-animation {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: min-content;
+    height: fit-content;
+}
+
+[type-ani] {
+    padding: 0 calc(1em/2) 0 0;
+    margin: 0;
+    white-space: nowrap;
+}
+
+/*Animation accessibility - no preference*/
+@media (prefers-reduced-motion: no-preference) {
+    #sparrow-detail {
+        animation: window-slide cubic-bezier(1,.12,.34,-0.05) 1s;
+    }
+
+    #sparrow-detail-logo {
+        animation: image-fade-out ease-out 1s;
+    }
+
+    .header-text {
+        animation: text-fade-out ease-out 1s;
+    }
+
+    #sparrow-detail, #sparrow-detail-logo, .header-text {
+        animation-play-state: paused;
+        animation-delay: calc(var(--scroll) * -1s);
+        animation-iteration-count: 1;
+        animation-fill-mode: both;
+    }
+
+    #about-me {
+        animation: window-slide cubic-bezier(1,.12,.34,-0.05) 2s;
+        animation-play-state: paused;
+        animation-delay: calc(max(0, var(--scroll) - 2) * -1s);
+        animation-iteration-count: 1;
+        animation-fill-mode: both;
+    }
+
+    #about-me-page {
+        animation: about-me-animation ease-out 0.5s;
+        animation-play-state: paused;
+        animation-delay: calc(max(0, var(--scroll) - 0.58) * -1s);
+        animation-iteration-count: 1;
+        animation-fill-mode: both;
+    }
+
+    @keyframes window-slide {
+        0% {transform: translateY(0%);}
+        100% {transform: translateY(-100%); opacity: 0.1;}
+    }
+
+    @keyframes image-fade-out {
+        100% {
+            opacity: 0;
+            transform: translateX(-100%);
+        }
+    }
+
+    @keyframes text-fade-out {
+        100% {
+            opacity: 0;
+            transform: translateX(100%);
+        }
+    }
+
+    @keyframes about-me-animation {
+        from {transform: translateY(150%);}
+        to {transform: translateY(0%);}
+    }
+
+    .type-animation {
+        /*modify variables to meet needs*/
+        --cursor-color: black;
+        --typing-character-count: 10;
+        --animation-speed: 1s;
+
+        border-right: var(--cursor-color) solid calc(1em/2);
+        padding-right: 0;
+
+        animation: typing var(--animation-speed) steps(var(--typing-character-count)) forwards 1,
+                   typing-cursor 0.8s step-end infinite;
+    }
+
+    .cursor {
+        border-right: var(--cursor-color) solid calc(1em/2);
+        animation: typing-cursor 1s step-end infinite;
+    }
+
+    @keyframes typing {
+        0% {width:0;}
+        100% {width:100%;}
+    }
+
+    @keyframes typing-cursor {
+        50% {border-right: transparent solid calc(1em/2);}
+    }
+}
+
+/*Animation accessibility - reduced*/
+@media (prefers-reduced-motion: reduced) {
+    #sparrow-detail {
+        transform: translateY(min(0%, calc(-1% * (100 * var(--scroll)))));
+    }
+
+    #about-me {
+        top: 100vh;
+        transform: translateY(min(0%, calc(-1% * (100 * var(--scroll)))));;
+    }
+}
